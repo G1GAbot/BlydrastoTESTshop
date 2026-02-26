@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Магазин услуг</title>
+    <title>🌟 МАГАЗИН УСЛУГ 🌟</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -12,39 +12,63 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: var(--tg-theme-secondary-bg-color, #f8f9fa);
-            color: var(--tg-theme-text-color, #1a1a1a);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
             min-height: 100vh;
             padding: 20px;
         }
 
-        /* Красивый заголовок */
+        /* ШАПКА С ИНСТРУКЦИЕЙ */
+        .top-instruction {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .top-instruction h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-badge {
+            background: #ffd700;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        /* ЗАГОЛОВОК */
         .header {
             text-align: center;
             margin-bottom: 25px;
         }
 
         .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
+            font-size: 32px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
         }
 
         .header p {
-            color: var(--tg-theme-hint-color, #666);
-            font-size: 14px;
+            font-size: 16px;
+            opacity: 0.9;
         }
 
-        /* Стили для карточек товаров */
+        /* КАРТОЧКИ ТОВАРОВ */
         .products-grid {
             display: flex;
             flex-direction: column;
@@ -53,161 +77,181 @@
         }
 
         .product-card {
-            background: var(--tg-theme-bg-color, white);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .product-card:active {
+            transform: scale(0.98);
         }
 
         .product-icon {
-            font-size: 40px;
+            font-size: 50px;
             margin-bottom: 15px;
             background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
+            border-radius: 20px;
         }
 
         .product-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--tg-theme-text-color, #1a1a1a);
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #333;
         }
 
         .product-description {
-            color: var(--tg-theme-hint-color, #666);
-            font-size: 14px;
-            margin-bottom: 15px;
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 20px;
             line-height: 1.5;
         }
 
-        /* Блок с ценами */
+        /* ЦЕНЫ */
         .price-block {
             display: flex;
             align-items: baseline;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .old-price {
-            font-size: 16px;
+            font-size: 18px;
             color: #999;
             text-decoration: line-through;
         }
 
         .new-price {
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 36px;
+            font-weight: 900;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .price-note {
-            font-size: 13px;
-            color: #4CAF50;
-            background: #4CAF5010;
-            padding: 4px 10px;
-            border-radius: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
             margin-left: auto;
         }
 
-        /* Кнопка покупки */
+        /* КНОПКА КУПИТЬ */
         .buy-button {
             width: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 15px;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 20px;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: opacity 0.2s;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(102,126,234,0.4);
         }
 
         .buy-button:active {
-            opacity: 0.8;
-            transform: scale(0.98);
+            transform: scale(0.95);
+            box-shadow: 0 5px 10px rgba(102,126,234,0.3);
         }
 
-        /* Секция с оплатой */
+        /* СЕКЦИЯ С ОПЛАТОЙ (всегда видна) */
         .payment-section {
-            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 30px 0 20px 0;
-            border: 2px solid #667eea30;
-            scroll-margin-top: 20px;
+            background: white;
+            border-radius: 30px 30px 0 0;
+            padding: 25px;
+            margin: 30px -20px -20px -20px;
+            color: #333;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
         }
 
         .payment-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--tg-theme-text-color, #1a1a1a);
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #333;
         }
 
-        .selected-product-badge {
-            background: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 14px;
+        .selected-product {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 15px;
             margin-bottom: 20px;
-            display: inline-block;
+            border-left: 5px solid #667eea;
         }
 
-        .payment-method {
-            background: var(--tg-theme-bg-color, white);
+        .selected-product-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .selected-product-price {
+            font-size: 18px;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        /* БЛОКИ ОПЛАТЫ */
+        .payment-block {
+            background: #f8f9fa;
             border-radius: 15px;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
         }
 
-        .payment-method h3 {
+        .payment-block h3 {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 15px;
             font-size: 18px;
-            color: var(--tg-theme-text-color, #1a1a1a);
+            color: #333;
         }
 
         .payment-details {
-            background: var(--tg-theme-secondary-bg-color, #f5f5f5);
+            background: white;
             padding: 20px;
             border-radius: 12px;
             font-family: monospace;
-            font-size: 18px;
+            font-size: 16px;
             word-break: break-all;
             margin: 15px 0;
-            border: 2px dashed #667eea50;
+            border: 2px dashed #667eea;
             text-align: center;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            color: #333;
         }
 
         .copy-button {
-            background: var(--tg-theme-button-color, #40a7e3);
-            color: var(--tg-theme-button-text-color, white);
+            background: #667eea;
+            color: white;
             border: none;
             border-radius: 12px;
-            padding: 15px 20px;
+            padding: 15px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -216,238 +260,228 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
         }
 
         .copy-button:active {
-            opacity: 0.8;
+            background: #764ba2;
+            transform: scale(0.98);
         }
 
-        .contact-block {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* ИНСТРУКЦИЯ ПОШАГОВО */
+        .instruction-box {
+            background: #e8f5e9;
             border-radius: 15px;
             padding: 20px;
-            margin-top: 20px;
-            text-align: center;
-            color: white;
-        }
-
-        .contact-block a {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: 700;
-            display: block;
-            margin: 10px 0;
-            background: rgba(255,255,255,0.2);
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .instruction-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
             margin: 20px 0;
-            padding: 15px;
-            background: #4CAF5010;
-            border-radius: 12px;
+            border: 2px solid #4CAF50;
         }
 
-        .step {
+        .instruction-title {
+            color: #2e7d32;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .step-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 16px;
+            gap: 15px;
+            margin-bottom: 15px;
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .step-number {
             background: #4CAF50;
             color: white;
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
             font-weight: bold;
         }
 
-        /* Ссылка на сайт */
-        .site-link {
+        /* КОНТАКТ */
+        .contact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-box a {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
             display: block;
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            margin: 10px 0;
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        /* АНИМАЦИИ */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .highlight {
+            animation: pulse 1s infinite;
+        }
+
+        /* ССЫЛКА НА ОСНОВНОЙ САЙТ */
+        .main-site-link {
+            display: block;
+            background: #333;
             color: white;
             text-decoration: none;
             border-radius: 15px;
-            padding: 16px;
+            padding: 15px;
             margin: 20px 0;
             text-align: center;
             font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .site-link span {
-            display: block;
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        /* Кнопка назад */
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--tg-theme-link-color, #667eea);
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 15px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            background: var(--tg-theme-secondary-bg-color, #f0f0f0);
-        }
-
-        /* Адаптация для темной темы */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: var(--tg-theme-secondary-bg-color, #1a1a1a);
-            }
-            
-            .product-card {
-                background: var(--tg-theme-bg-color, #2d2d2d);
-                border-color: rgba(255, 255, 255, 0.05);
-            }
-            
-            .old-price {
-                color: #777;
-            }
-
-            .payment-method {
-                background: var(--tg-theme-bg-color, #2d2d2d);
-            }
-
-            .payment-details {
-                background: var(--tg-theme-secondary-bg-color, #1a1a1a);
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Кнопка назад -->
-    <a href="#" onclick="window.history.back(); return false;" class="back-button">
-        ← Назад
-    </a>
-
-    <!-- Заголовок -->
-    <div class="header">
-        <h1>✨ Наши услуги</h1>
-        <p>Выберите то, что вам нужно</p>
+    <!-- ВАЖНАЯ ИНСТРУКЦИЯ СВЕРХУ -->
+    <div class="top-instruction">
+        <h2>📢 КАК КУПИТЬ (3 ПРОСТЫХ ШАГА):</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+            <span class="step-badge">1️⃣ Выбери товар</span>
+            <span class="step-badge">2️⃣ Нажми КУПИТЬ</span>
+            <span class="step-badge">3️⃣ Оплати и отправь /paid</span>
+        </div>
     </div>
 
-    <!-- Сетка товаров -->
+    <!-- ЗАГОЛОВОК -->
+    <div class="header">
+        <h1>✨ НАШ МАГАЗИН ✨</h1>
+        <p>👇 Выбери нужную услугу 👇</p>
+    </div>
+
+    <!-- ТОВАРЫ -->
     <div class="products-grid">
         <!-- Товар 1: Оптимизация -->
         <div class="product-card">
             <div class="product-icon">⚡</div>
-            <h2 class="product-title">Оптимизация</h2>
-            <p class="product-description">
-                Профессиональная оптимизация вашего проекта
-            </p>
+            <div class="product-title">ОПТИМИЗАЦИЯ</div>
+            <div class="product-description">
+                ✅ Профессиональная оптимизация<br>
+                ✅ Ускорение работы проекта<br>
+                ✅ Оптимизация кода и базы данных
+            </div>
             <div class="price-block">
                 <span class="old-price">600 ₽</span>
                 <span class="new-price">250 ₽</span>
                 <span class="price-note">🔥 -58%</span>
             </div>
-            <button class="buy-button" onclick="selectProduct('optimization')">
-                <span>💳</span> Купить со скидкой
+            <button class="buy-button" onclick="buyProduct('optimization')">
+                💳 КУПИТЬ СО СКИДКОЙ
             </button>
         </div>
 
-        <!-- Товар 2: АХК (Автоматизация) -->
+        <!-- Товар 2: АХК -->
         <div class="product-card">
             <div class="product-icon">🤖</div>
-            <h2 class="product-title">АХК (Автоматизация)</h2>
-            <p class="product-description">
-                Настройка AutoHotkey скриптов
-            </p>
+            <div class="product-title">АХК (АВТОМАТИЗАЦИЯ)</div>
+            <div class="product-description">
+                ✅ Настройка AutoHotkey скриптов<br>
+                ✅ Кликеры и макросы<br>
+                ✅ Автоматизация любых действий
+            </div>
             <div class="price-block">
                 <span class="old-price">300 ₽</span>
                 <span class="new-price">150 ₽</span>
                 <span class="price-note">💰 -50%</span>
             </div>
-            <button class="buy-button" onclick="selectProduct('ahk')">
-                <span>💳</span> Купить со скидкой
+            <button class="buy-button" onclick="buyProduct('ahk')">
+                💳 КУПИТЬ СО СКИДКОЙ
             </button>
         </div>
     </div>
 
-    <!-- СЕКЦИЯ С ОПЛАТОЙ (появляется после выбора товара) -->
+    <!-- СЕКЦИЯ ОПЛАТЫ -->
     <div class="payment-section" id="paymentSection">
         <div class="payment-title">
-            <span>💳</span> Оплата
+            <span>💳</span> ОФОРМЛЕНИЕ ЗАКАЗА
         </div>
         
-        <div id="selectedProductInfo" class="selected-product-badge">
-            Выберите товар
+        <!-- Выбранный товар -->
+        <div class="selected-product" id="selectedProduct">
+            <div class="selected-product-name" id="selectedProductName">👆 Сначала выбери товар</div>
+            <div class="selected-product-price" id="selectedProductPrice"></div>
         </div>
-        
-        <!-- Криптовалюта -->
-        <div class="payment-method">
-            <h3>💰 Криптовалюта (USDT - TRC20)</h3>
+
+        <!-- КРИПТОВАЛЮТА -->
+        <div class="payment-block">
+            <h3>💰 КРИПТОВАЛЮТА USDT (TRC-20)</h3>
             <div class="payment-details" id="walletAddress">
                 TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             </div>
             <button class="copy-button" onclick="copyToClipboard('walletAddress')">
-                📋 Скопировать адрес кошелька
+                📋 СКОПИРОВАТЬ АДРЕС КОШЕЛЬКА
             </button>
         </div>
-        
-        <!-- Банковская карта -->
-        <div class="payment-method">
-            <h3>💳 Банковская карта</h3>
+
+        <!-- БАНКОВСКАЯ КАРТА -->
+        <div class="payment-block">
+            <h3>💳 БАНКОВСКАЯ КАРТА (Тинькофф)</h3>
             <div class="payment-details" id="cardNumber">
                 2200 1234 5678 9012
             </div>
             <button class="copy-button" onclick="copyToClipboard('cardNumber')">
-                📋 Скопировать номер карты
+                📋 СКОПИРОВАТЬ НОМЕР КАРТЫ
             </button>
-            <div style="margin-top: 15px; font-size: 14px; color: var(--tg-theme-hint-color, #666);">
-                Банк: Тинькофф • Получатель: Kewberg Shop
-            </div>
+            <p style="margin-top: 10px; color: #666;">Получатель: KEWBERG SHOP</p>
         </div>
-        
-        <!-- Инструкция -->
-        <div class="instruction-steps">
-            <div class="step">
+
+        <!-- ПОНЯТНАЯ ИНСТРУКЦИЯ -->
+        <div class="instruction-box">
+            <div class="instruction-title">📋 ЧТО ДЕЛАТЬ ПОСЛЕ ОПЛАТЫ:</div>
+            
+            <div class="step-item">
                 <span class="step-number">1</span>
-                <span>Оплатите любым удобным способом</span>
+                <span><strong>Сделай скриншот</strong> оплаты</span>
             </div>
-            <div class="step">
+            
+            <div class="step-item">
                 <span class="step-number">2</span>
-                <span>Сделайте скриншот оплаты</span>
+                <span><strong>Вернись в чат с ботом</strong></span>
             </div>
-            <div class="step">
+            
+            <div class="step-item">
                 <span class="step-number">3</span>
-                <span>Отправьте скриншот @kewberg</span>
+                <span><strong>Отправь команду:</strong> <code style="background: #eee; padding: 5px;">/paid <span id="orderNumberExample">1</span></code></span>
+            </div>
+            
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <span><strong>Напиши сюда</strong> и пришли скриншот</span>
             </div>
         </div>
-        
-        <!-- Контакт -->
-        <div class="contact-block">
-            <div>📱 После оплаты напишите сюда:</div>
+
+        <!-- КОНТАКТ -->
+        <div class="contact-box">
+            <div>📱 ПОСЛЕ ОПЛАТЫ ПИШИ СЮДА:</div>
             <a href="https://t.me/kewberg" target="_blank">@kewberg</a>
-            <div style="font-size: 14px; opacity: 0.9;">(отправьте скриншот, и мы пришлем товар)</div>
+            <div style="font-size: 14px;">👇 ОТПРАВЬ СКРИНШОТ И ПОЛУЧИ ТОВАР 👇</div>
         </div>
     </div>
 
-    <!-- Ссылка на ваш сайт -->
-    <a href="https://g1gabot.github.io/Obnova-1.2/" 
-       class="site-link" 
-       target="_blank">
-        🌐 Перейти на основной сайт
-        <span>https://g1gabot.github.io/Obnova-1.2/</span>
+    <!-- ССЫЛКА НА ОСНОВНОЙ САЙТ -->
+    <a href="https://g1gabot.github.io/BlydrastoTESTshop/" class="main-site-link" target="_blank">
+        🌐 ПЕРЕЙТИ НА ОСНОВНОЙ САЙТ
     </a>
 
     <script>
@@ -456,45 +490,55 @@
         if (tg) {
             tg.ready();
             tg.expand();
+            tg.setHeaderColor('secondary_bg_color');
         }
 
-        // Функция выбора товара
-        function selectProduct(product) {
+        let currentOrderId = null;
+
+        // Функция покупки
+        function buyProduct(product) {
             // Генерируем случайные реквизиты
             const randomCard = Math.floor(Math.random() * 10000000000000000).toString().padStart(16, '0');
             const randomCardFormatted = randomCard.replace(/(\d{4})/g, '$1 ').trim();
-            
             const randomWallet = 'T' + Math.random().toString(36).substring(2, 15).toUpperCase() + 
                                  Math.random().toString(36).substring(2, 10).toUpperCase();
             
-            // Обновляем реквизиты на странице
+            // Обновляем реквизиты
             document.getElementById('walletAddress').textContent = randomWallet;
             document.getElementById('cardNumber').textContent = randomCardFormatted;
             
-            // Обновляем информацию о выбранном товаре
-            const productNames = {
-                'optimization': '⚡ Оптимизация - 250₽',
-                'ahk': '🤖 АХК (Автоматизация) - 150₽'
+            // Обновляем информацию о товаре
+            const products = {
+                'optimization': {
+                    name: '⚡ ОПТИМИЗАЦИЯ',
+                    price: '250 ₽ (2.5 USDT)'
+                },
+                'ahk': {
+                    name: '🤖 АХК (АВТОМАТИЗАЦИЯ)',
+                    price: '150 ₽ (1.5 USDT)'
+                }
             };
-            document.getElementById('selectedProductInfo').textContent = '✓ ' + productNames[product];
             
-            // Плавно прокручиваем к секции оплаты
-            document.getElementById('paymentSection').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+            document.getElementById('selectedProductName').innerHTML = '✅ ВЫБРАНО: ' + products[product].name;
+            document.getElementById('selectedProductPrice').innerHTML = '💰 Цена: ' + products[product].price;
             
-            // Вибрация если есть Telegram
+            // Отправляем данные в бота
             if (tg) {
+                tg.sendData(JSON.stringify({
+                    action: 'payment_request',
+                    product: product
+                }));
                 tg.HapticFeedback.impactOccurred('medium');
             }
+            
+            // Плавно прокручиваем к оплате
+            document.getElementById('paymentSection').scrollIntoView({ behavior: 'smooth' });
         }
 
         // Функция копирования
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).textContent;
             
-            // Простой способ копирования
             const textarea = document.createElement('textarea');
             textarea.value = text;
             document.body.appendChild(textarea);
@@ -502,21 +546,25 @@
             document.execCommand('copy');
             document.body.removeChild(textarea);
             
-            // Показываем уведомление
-            alert('✅ Скопировано!');
+            alert('✅ СКОПИРОВАНО!');
             
             if (tg) {
                 tg.HapticFeedback.notificationOccurred('success');
             }
         }
 
-        // При загрузке страницы генерируем начальные реквизиты
+        // При загрузке страницы
         window.onload = function() {
+            // Генерируем начальные реквизиты
             const randomCard = Math.floor(Math.random() * 10000000000000000).toString().padStart(16, '0');
             document.getElementById('cardNumber').textContent = randomCard.replace(/(\d{4})/g, '$1 ').trim();
             
             const randomWallet = 'T' + Math.random().toString(36).substring(2, 15).toUpperCase();
             document.getElementById('walletAddress').textContent = randomWallet;
+            
+            // Генерируем случайный номер заказа для примера
+            const randomOrder = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('orderNumberExample').textContent = randomOrder;
         };
     </script>
 </body>
