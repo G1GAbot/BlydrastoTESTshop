@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BLYDRASTO SHOP | RUST</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Подключаем анимации и шрифты -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600;800;900&display=swap');
         
-        /* Сброс стилей */
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Фон с логотипами Rust */
         body::before {
             content: '';
             position: fixed;
@@ -34,51 +31,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><text x="10" y="20" font-family="Arial" font-size="14" fill="%23ff5500">RUST</text><text x="60" y="45" font-family="Arial" font-size="12" fill="%23ff5500">⚔️</text><text x="20" y="80" font-family="Arial" font-size="16" fill="%23ff5500">RUST</text><text x="70" y="15" font-family="Arial" font-size="10" fill="%23ff5500">⚡</text><text x="40" y="95" font-family="Arial" font-size="18" fill="%23ff5500">RUST</text><text x="80" y="70" font-family="Arial" font-size="12" fill="%23ff5500">⚡</text><circle cx="30" cy="30" r="3" fill="%23ff5500"/><circle cx="70" cy="60" r="2" fill="%23ff5500"/><circle cx="15" cy="50" r="2" fill="%23ff5500"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><text x="10" y="20" font-family="Arial" font-size="14" fill="%23ff5500">RUST</text><text x="60" y="45" font-family="Arial" font-size="12" fill="%23ff5500">⚔️</text><text x="20" y="80" font-family="Arial" font-size="16" fill="%23ff5500">RUST</text><text x="70" y="15" font-family="Arial" font-size="10" fill="%23ff5500">⚡</text></svg>');
             background-size: 150px 150px;
             pointer-events: none;
             z-index: 0;
             animation: floatBg 60s linear infinite;
         }
 
-        /* Анимированный фон с ржавчиной */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(255, 85, 0, 0.1) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 85, 0, 0.1) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes floatBg {
-            from { background-position: 0 0; }
-            to { background-position: 150px 150px; }
-        }
-
-        /* Эффект ржавого металла */
-        .rust-effect {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff5500, #ffaa00, #ff5500);
-            box-shadow: 0 0 20px #ff5500;
-            z-index: 10;
-            animation: scanLine 3s ease-in-out infinite;
-        }
-
-        @keyframes scanLine {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        /* Контейнер с затемнением для читаемости */
         .content {
             position: relative;
             z-index: 2;
@@ -87,15 +46,11 @@
             margin: 0 auto;
         }
 
-        /* Шапка */
         .header {
             text-align: center;
             margin-bottom: 30px;
-            animation: fadeInDown 1s;
-            position: relative;
         }
 
-        /* Логотип BLYDRASTO */
         .logo {
             font-family: 'Russo One', sans-serif;
             font-size: 48px;
@@ -106,52 +61,7 @@
             text-shadow: 0 0 30px rgba(255,85,0,0.5);
             margin-bottom: 10px;
             letter-spacing: 4px;
-            position: relative;
-            display: inline-block;
             animation: glitch 3s infinite;
-        }
-
-        .logo::before,
-        .logo::after {
-            content: 'BLYDRASTO SHOP';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff5500, #ffaa00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo::before {
-            left: 2px;
-            text-shadow: -2px 0 #00ffff;
-            animation: glitch-1 2s infinite linear alternate-reverse;
-        }
-
-        .logo::after {
-            left: -2px;
-            text-shadow: 2px 0 #ff00ff;
-            animation: glitch-2 2s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-1 {
-            0% { clip-path: inset(0 0 0 0); }
-            5% { clip-path: inset(20% 0 50% 0); }
-            10% { clip-path: inset(0 0 0 0); }
-            15% { clip-path: inset(80% 0 5% 0); }
-            20% { clip-path: inset(0 0 0 0); }
-            100% { clip-path: inset(0 0 0 0); }
-        }
-
-        @keyframes glitch-2 {
-            0% { clip-path: inset(0 0 0 0); }
-            5% { clip-path: inset(60% 0 20% 0); }
-            10% { clip-path: inset(0 0 0 0); }
-            15% { clip-path: inset(10% 0 70% 0); }
-            20% { clip-path: inset(0 0 0 0); }
-            100% { clip-path: inset(0 0 0 0); }
         }
 
         .subtitle {
@@ -164,10 +74,8 @@
             padding: 10px 20px;
             border-radius: 50px;
             display: inline-block;
-            border: 1px solid rgba(255,85,0,0.3);
         }
 
-        /* Карточки товаров */
         .products-grid {
             display: flex;
             flex-direction: column;
@@ -181,33 +89,13 @@
             border-radius: 30px;
             padding: 30px;
             border: 2px solid rgba(255,85,0,0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,85,0,0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,85,0,0.1), transparent 50%);
-            animation: rustRotate 10s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes rustRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transition: all 0.4s;
         }
 
         .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px);
             border-color: #ff5500;
-            box-shadow: 0 30px 50px rgba(255,85,0,0.4), 0 0 50px rgba(255,85,0,0.3);
         }
 
         .product-icon {
@@ -221,13 +109,7 @@
             align-items: center;
             justify-content: center;
             border: 2px solid #ff5500;
-            position: relative;
             animation: pulseIcon 2s infinite;
-        }
-
-        @keyframes pulseIcon {
-            0%, 100% { box-shadow: 0 0 20px rgba(255,85,0,0.3); }
-            50% { box-shadow: 0 0 40px rgba(255,85,0,0.6); }
         }
 
         .product-title {
@@ -238,17 +120,13 @@
             background: linear-gradient(135deg, #ff5500, #ffaa00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
-        /* Стили для описания с функциями */
         .features-list {
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255,85,0,0.3);
         }
 
         .feature-item {
@@ -258,36 +136,17 @@
             margin-bottom: 12px;
             color: #fff;
             font-size: 14px;
-            line-height: 1.5;
             padding: 8px;
             background: rgba(255,255,255,0.05);
             border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,85,0,0.1);
-            transform: translateX(5px);
         }
 
         .feature-item::before {
             content: '⚡';
             color: #ff5500;
             font-size: 16px;
-            animation: spark 1.5s infinite;
         }
 
-        @keyframes spark {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
-        .feature-item:nth-child(2)::before { content: '🎯'; animation-delay: 0.1s; }
-        .feature-item:nth-child(3)::before { content: '💥'; animation-delay: 0.2s; }
-        .feature-item:nth-child(4)::before { content: '🔧'; animation-delay: 0.3s; }
-        .feature-item:nth-child(5)::before { content: '🧹'; animation-delay: 0.4s; }
-
-        /* Блок цен */
         .price-block {
             display: flex;
             align-items: baseline;
@@ -310,8 +169,6 @@
             background: linear-gradient(135deg, #ff5500, #ffaa00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1;
-            text-shadow: 0 0 20px rgba(255,85,0,0.5);
         }
 
         .price-note {
@@ -320,19 +177,9 @@
             padding: 5px 15px;
             border-radius: 50px;
             font-size: 12px;
-            font-weight: 600;
             margin-left: auto;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: blink 1.5s infinite;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Кнопка покупки */
         .buy-button {
             width: 100%;
             background: linear-gradient(135deg, #ff5500, #ffaa00);
@@ -348,37 +195,13 @@
             justify-content: center;
             gap: 10px;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 20px rgba(255,85,0,0.3);
-        }
-
-        .buy-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .buy-button:hover::before {
-            width: 300px;
-            height: 300px;
         }
 
         .buy-button:active {
             transform: scale(0.95);
-            box-shadow: 0 5px 15px rgba(255,85,0,0.5);
         }
 
-        /* Секция подтверждения */
         .confirm-section {
             background: rgba(20, 25, 35, 0.95);
             backdrop-filter: blur(20px);
@@ -386,34 +209,14 @@
             padding: 30px;
             margin: 40px -20px -20px -20px;
             border: 2px solid rgba(255,85,0,0.3);
-            border-bottom: none;
-            box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
         }
 
-        .confirm-title {
-            font-family: 'Russo One', sans-serif;
-            font-size: 24px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ff5500;
-            text-transform: uppercase;
-        }
-
-        /* Выбранный товар */
         .selected-product {
             background: linear-gradient(135deg, rgba(255,85,0,0.15), rgba(255,170,0,0.15));
             padding: 20px;
             border-radius: 20px;
             margin-bottom: 25px;
             border: 1px solid #ff5500;
-            animation: glow 2s infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255,85,0,0.3); }
-            50% { box-shadow: 0 0 40px rgba(255,85,0,0.6); }
         }
 
         .selected-product-name {
@@ -423,34 +226,17 @@
             margin-bottom: 5px;
         }
 
-        .selected-product-price {
-            font-size: 18px;
-            color: #fff;
-            opacity: 0.9;
-        }
-
-        /* Блоки оплаты */
         .payment-block {
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s;
-        }
-
-        .payment-block:hover {
-            border-color: #ff5500;
-            transform: translateX(5px);
         }
 
         .payment-block h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-size: 18px;
             color: #ff5500;
+            margin-bottom: 15px;
         }
 
         .payment-details {
@@ -463,19 +249,6 @@
             margin: 15px 0;
             border: 1px dashed #ff5500;
             text-align: center;
-            letter-spacing: 2px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payment-details::before {
-            content: '⬤';
-            position: absolute;
-            left: 10px;
-            color: #ff5500;
-            font-size: 8px;
-            animation: pulse 2s infinite;
         }
 
         .copy-button {
@@ -485,81 +258,15 @@
             border-radius: 12px;
             padding: 15px;
             font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
         }
 
-        .copy-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255,85,0,0.4);
-        }
-
-        /* СБП БЛОК - ОБНОВЛЕННЫЙ */
-        .sbp-block {
-            border-color: #ff5500;
-            background: linear-gradient(135deg, rgba(255,85,0,0.2), rgba(255,170,0,0.1));
-            text-align: center;
-        }
-
-        .qr-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 20px;
-            border: 4px solid #ff5500;
-            padding: 10px;
-            background: white;
-            box-shadow: 0 0 30px rgba(255,85,0,0.5);
-            animation: pulse 2s infinite;
-            margin: 20px auto;
-            display: block;
-        }
-
-        .sbp-link-button {
-            display: inline-block;
-            padding: 15px 25px;
-            background: #ff5500;
-            color: white;
-            text-decoration: none;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 16px;
-            margin: 15px 0;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .sbp-link-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255,85,0,0.4);
-            background: #ffaa00;
-        }
-
-        /* Инструкция */
         .instruction-box {
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
             padding: 25px;
             margin: 25px 0;
-            border: 1px solid rgba(255,85,0,0.3);
-        }
-
-        .instruction-title {
-            color: #ff5500;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-transform: uppercase;
         }
 
         .step-item {
@@ -570,14 +277,6 @@
             background: rgba(0,0,0,0.4);
             padding: 15px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s;
-        }
-
-        .step-item:hover {
-            border-color: #ff5500;
-            transform: translateX(5px);
-            background: rgba(255,85,0,0.1);
         }
 
         .step-number {
@@ -590,35 +289,14 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 18px;
-            box-shadow: 0 0 20px rgba(255,85,0,0.5);
         }
 
-        /* Контакт */
         .contact-box {
             background: linear-gradient(135deg, #ff5500, #ffaa00);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
             margin-top: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-box::before {
-            content: '⚡';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 100px;
-            opacity: 0.1;
-            transform: rotate(15deg);
-            animation: spin 10s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         .contact-box a {
@@ -631,130 +309,50 @@
             padding: 15px;
             background: rgba(0,0,0,0.2);
             border-radius: 15px;
-            transition: all 0.3s;
-            letter-spacing: 2px;
-            font-family: 'Russo One', sans-serif;
         }
 
-        .contact-box a:hover {
-            background: rgba(0,0,0,0.3);
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        @keyframes floatBg {
+            from { background-position: 0 0; }
+            to { background-position: 150px 150px; }
         }
 
-        /* Анимации */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Мобильная адаптация */
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 36px;
-            }
-            
-            .new-price {
-                font-size: 32px;
-            }
-            
-            .product-title {
-                font-size: 22px;
-            }
-            
-            .feature-item {
-                font-size: 13px;
-            }
-            
-            .qr-image {
-                width: 180px;
-                height: 180px;
-            }
-        }
-
-        /* Ссылка на основной сайт */
-        .main-site-link {
-            display: block;
-            background: rgba(255,85,0,0.1);
-            color: #ff5500;
-            text-decoration: none;
-            border-radius: 15px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: 700;
-            border: 2px solid rgba(255,85,0,0.3);
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .main-site-link:hover {
-            background: rgba(255,85,0,0.2);
-            border-color: #ff5500;
-            color: #ffaa00;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255,85,0,0.3);
+        @keyframes pulseIcon {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,85,0,0.3); }
+            50% { box-shadow: 0 0 40px rgba(255,85,0,0.6); }
         }
     </style>
 </head>
 <body>
-    <!-- Эффект ржавой линии -->
-    <div class="rust-effect"></div>
-
     <div class="content">
-        <!-- Шапка -->
-        <div class="header animate__animated animate__fadeInDown">
+        <div class="header">
             <div class="logo">BLYDRASTO SHOP</div>
             <div class="subtitle">RUST EDITION ⚡</div>
         </div>
 
-        <!-- Товары -->
         <div class="products-grid">
-            <!-- Товар: Tweaker Blydrastorust -->
-            <div class="product-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
+            <!-- Tweaker -->
+            <div class="product-card">
                 <div class="product-icon">⚙️</div>
                 <div class="product-title">Tweaker Blydrastorust</div>
-                
                 <div class="features-list">
                     <div class="feature-item">FPS прирост 5-15% на любом железе</div>
                     <div class="feature-item">Убирает Input Lag - мышь как продолжение руки</div>
                     <div class="feature-item">Меньше крашей - исправляет файл подкачки</div>
                     <div class="feature-item">Режим «Картошка» для слабых ПК</div>
-                    <div class="feature-item">Чистка мусора - отключает лишние процессы Windows</div>
+                    <div class="feature-item">Чистка мусора - отключает лишние процессы</div>
                 </div>
-
                 <div class="price-block">
                     <span class="old-price">600 ₽</span>
                     <span class="new-price">250 ₽</span>
                     <span class="price-note">⚡ -58%</span>
                 </div>
-                
                 <button class="buy-button" onclick="buyProduct('optimization')">
-                    💣 АКТИВИРОВАТЬ ТВИК
+                    💣 АКТИВИРОВАТЬ
                 </button>
             </div>
 
-            <!-- Товар 2: АХК -->
-            <div class="product-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+            <!-- АХК -->
+            <div class="product-card">
                 <div class="product-icon">🤖</div>
                 <div class="product-title">АХК СКРИПТЫ</div>
                 <div class="features-list">
@@ -764,56 +362,37 @@
                     <div class="feature-item">Авто-сбор ресурсов</div>
                     <div class="feature-item">Под любые задачи</div>
                 </div>
-
                 <div class="price-block">
                     <span class="old-price">300 ₽</span>
                     <span class="new-price">150 ₽</span>
                     <span class="price-note">🔥 -50%</span>
                 </div>
-                
                 <button class="buy-button" onclick="buyProduct('ahk')">
-                    🤖 ПОЛУЧИТЬ СКРИПТЫ
+                    🤖 ПОЛУЧИТЬ
                 </button>
             </div>
         </div>
 
         <!-- Секция подтверждения -->
         <div class="confirm-section" id="confirmSection">
-            <div class="confirm-title">
-                <span>⚡</span> ПОДТВЕРЖДЕНИЕ
-            </div>
-            
-            <!-- Выбранный товар -->
             <div class="selected-product" id="selectedProduct">
                 <div class="selected-product-name" id="selectedProductName">⚡ Выбери товар</div>
                 <div class="selected-product-price" id="selectedProductPrice"></div>
             </div>
 
-            <!-- СБП БЛОК (QR + ссылка) -->
-            <div class="payment-block sbp-block">
-                <h3>⚡ СБП - МОМЕНТАЛЬНО</h3>
-                
-                <!-- QR-код -->
-                <div style="text-align: center;">
-                    <img src="https://i.ibb.co/Kzzz1zh/photo-2026-02-27-02-21-30.jpg" 
-                         alt="QR код СБП"
-                         class="qr-image">
-                    <p style="margin-top: 15px; color: #ff5500; font-weight: bold;">
-                        📱 Отсканируй камерой Сбера
-                    </p>
+            <!-- Карта -->
+            <div class="payment-block">
+                <h3>💳 БАНКОВСКАЯ КАРТА (Тинькофф)</h3>
+                <div class="payment-details" id="cardNumber">
+                    2200 1234 5678 9012
                 </div>
-                
-                <!-- Ссылка на перевод -->
-                <div style="text-align: center; margin: 15px 0;">
-                    <a href="https://www.sberbank.ru/ru/choise_bank?requisiteNumber=79515900663&bankCode=100000000111" 
-                       target="_blank"
-                       class="sbp-link-button">
-                        🔗 ПЕРЕЙТИ К ОПЛАТЕ
-                    </a>
-                </div>
+                <button class="copy-button" onclick="copyToClipboard('cardNumber')">
+                    📋 СКОПИРОВАТЬ НОМЕР
+                </button>
+                <p style="margin-top: 10px; text-align: center;">Получатель: KEWBERG SHOP</p>
             </div>
 
-            <!-- Крипта TRC20 -->
+            <!-- Крипта -->
             <div class="payment-block">
                 <h3>💰 КРИПТОВАЛЮТА USDT (TRC-20)</h3>
                 <div class="payment-details" id="walletAddress">
@@ -826,55 +405,35 @@
 
             <!-- Инструкция -->
             <div class="instruction-box">
-                <div class="instruction-title">
-                    <span>📋</span> ЧТО ДЕЛАТЬ ПОСЛЕ ОПЛАТЫ
-                </div>
-                
                 <div class="step-item">
                     <span class="step-number">1</span>
-                    <span><strong>Оплати</strong> (СБП или крипта)</span>
+                    <span><strong>Оплати</strong> (карта или крипта)</span>
                 </div>
-                
                 <div class="step-item">
                     <span class="step-number">2</span>
-                    <span><strong>Вернись в чат с ботом</strong></span>
+                    <span><strong>Нажми «Я ОПЛАТИЛ»</strong> в боте</span>
                 </div>
-                
                 <div class="step-item">
                     <span class="step-number">3</span>
-                    <span><strong>Нажми кнопку «Я ОПЛАТИЛ»</strong></span>
-                </div>
-                
-                <div class="step-item">
-                    <span class="step-number">4</span>
                     <span><strong>Жди подтверждения</strong> и получи товар</span>
                 </div>
             </div>
 
             <!-- Контакт -->
             <div class="contact-box">
-                <div>📱 ЕСТЬ ВОПРОСЫ? ПИШИ:</div>
+                <div>📱 ВОПРОСЫ?</div>
                 <a href="https://t.me/kewberg" target="_blank">@kewberg</a>
             </div>
         </div>
-
-        <!-- Ссылка на основной сайт -->
-        <a href="https://g1gabot.github.io/BlydrastoTESTshop/" class="main-site-link" target="_blank">
-            🌐 ПЕРЕЙТИ В ОСНОВНОЙ МАГАЗИН
-        </a>
     </div>
 
     <script>
-        // Инициализация Telegram
         let tg = window.Telegram?.WebApp;
         if (tg) {
             tg.ready();
             tg.expand();
-            tg.setHeaderColor('#0a0e14');
-            tg.setBackgroundColor('#0a0e14');
         }
 
-        // Функция покупки
         function buyProduct(product) {
             const products = {
                 'optimization': {
@@ -899,31 +458,14 @@
             }
             
             document.getElementById('confirmSection').scrollIntoView({ behavior: 'smooth' });
-            
-            // Анимация для выбранного товара
-            const selected = document.getElementById('selectedProduct');
-            selected.style.transform = 'scale(1.05)';
-            setTimeout(() => {
-                selected.style.transform = 'scale(1)';
-            }, 200);
         }
 
-        // Функция копирования
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).textContent;
-            
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            alert('✅ СКОПИРОВАНО!');
-            
-            if (tg) {
-                tg.HapticFeedback.notificationOccurred('success');
-            }
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Скопировано!');
+                if (tg) tg.HapticFeedback.notificationOccurred('success');
+            });
         }
     </script>
 </body>
