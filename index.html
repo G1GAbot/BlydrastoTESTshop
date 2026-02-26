@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Магазин услуг</title>
+    <!-- Скрипт Telegram загружаем в head -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -24,7 +25,6 @@
         .header {
             text-align: center;
             margin-bottom: 25px;
-            animation: fadeInDown 0.5s ease;
         }
 
         .header h1 {
@@ -54,18 +54,8 @@
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.5s ease backwards;
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
-        }
-
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
 
         .product-icon {
             font-size: 40px;
@@ -136,7 +126,6 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.3s ease, transform 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -145,10 +134,6 @@
 
         .buy-button:active {
             transform: scale(0.98);
-        }
-
-        .buy-button:hover {
-            opacity: 0.9;
         }
 
         /* Кнопка-ссылка на ваш сайт */
@@ -162,14 +147,7 @@
             margin: 20px 0;
             text-align: center;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.5s ease 0.3s backwards;
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .site-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .site-link span {
@@ -190,7 +168,6 @@
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
             z-index: 1000;
-            animation: fadeIn 0.3s ease;
         }
 
         .modal-content {
@@ -201,8 +178,6 @@
             background: var(--tg-theme-bg-color, white);
             border-radius: 25px 25px 0 0;
             padding: 25px;
-            transform: translateY(0);
-            animation: slideUp 0.3s ease;
             max-height: 80vh;
             overflow-y: auto;
         }
@@ -273,10 +248,6 @@
             margin-top: 5px;
         }
 
-        .copy-button:active {
-            opacity: 0.8;
-        }
-
         .contact-info {
             background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
             border-radius: 15px;
@@ -292,17 +263,7 @@
             font-size: 18px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        /* Плавающая кнопка назад */
+        /* Кнопка назад */
         .back-button {
             display: inline-flex;
             align-items: center;
@@ -314,37 +275,9 @@
             padding: 8px 12px;
             border-radius: 10px;
             background: var(--tg-theme-secondary-bg-color, #f0f0f0);
-            transition: background 0.3s ease;
         }
 
-        .back-button:hover {
-            background: var(--tg-theme-hint-color, #e0e0e0);
-        }
-
-        /* Анимации */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Адаптация для темной темы Telegram */
+        /* Адаптация для темной темы */
         @media (prefers-color-scheme: dark) {
             body {
                 background: var(--tg-theme-secondary-bg-color, #1a1a1a);
@@ -384,34 +317,36 @@
     <!-- Сетка товаров -->
     <div class="products-grid">
         <!-- Товар 1: Оптимизация -->
-        <div class="product-card" id="product-optimization">
+        <div class="product-card">
             <div class="product-icon">⚡</div>
             <h2 class="product-title">Оптимизация</h2>
             <p class="product-description">
-                Профессиональная оптимизация вашего проекта для максимальной производительности. Ускорение работы, оптимизация кода и базы данных.
+                Профессиональная оптимизация вашего проекта для максимальной производительности.
             </p>
             <div class="price-block">
                 <span class="old-price">600 ₽</span>
                 <span class="new-price">250 ₽</span>
                 <span class="price-note">🔥 -58%</span>
             </div>
+            <!-- КНОПКА С ID ДЛЯ ТОВАРА 1 -->
             <button class="buy-button" onclick="showPaymentModal('optimization')">
                 <span>💳</span> Купить со скидкой
             </button>
         </div>
 
         <!-- Товар 2: АХК (Автоматизация) -->
-        <div class="product-card" id="product-ahk">
+        <div class="product-card">
             <div class="product-icon">🤖</div>
             <h2 class="product-title">АХК (Автоматизация)</h2>
             <p class="product-description">
-                Настройка AutoHotkey скриптов для автоматизации любых действий. Кликеры, макросы, автоввод данных и многое другое.
+                Настройка AutoHotkey скриптов для автоматизации любых действий. Кликеры, макросы.
             </p>
             <div class="price-block">
                 <span class="old-price">300 ₽</span>
                 <span class="new-price">150 ₽</span>
                 <span class="price-note">💰 -50%</span>
             </div>
+            <!-- КНОПКА С ID ДЛЯ ТОВАРА 2 -->
             <button class="buy-button" onclick="showPaymentModal('ahk')">
                 <span>💳</span> Купить со скидкой
             </button>
@@ -421,8 +356,7 @@
     <!-- Ссылка на ваш сайт -->
     <a href="https://g1gabot.github.io/Obnova-1.2/" 
        class="site-link" 
-       target="_blank" 
-       rel="noopener noreferrer">
+       target="_blank">
         🌐 Перейти на основной сайт
         <span>https://g1gabot.github.io/Obnova-1.2/</span>
     </a>
@@ -447,27 +381,46 @@
         </div>
     </div>
 
+    <!-- ВЕСЬ JAVASCRIPT В ОДНОМ МЕСТЕ В КОНЦЕ -->
     <script>
-        // Инициализация Telegram Web App
-        let tg = window.Telegram.WebApp;
-        
-        // Сообщаем Telegram, что приложение готово
-        tg.ready();
-        tg.expand();
+        // Ждем загрузки страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена!');
+            
+            // Инициализация Telegram Web App
+            if (window.Telegram && window.Telegram.WebApp) {
+                let tg = window.Telegram.WebApp;
+                tg.ready();
+                tg.expand();
+                tg.setHeaderColor('secondary_bg_color');
+                console.log('Telegram Web App инициализирован');
+            } else {
+                console.log('Telegram Web App не найден (тестирование вне Telegram)');
+            }
+        });
 
         // Функция для копирования текста
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                // Показываем уведомление об успешном копировании
-                tg.HapticFeedback.notificationOccurred('success');
-                alert('Скопировано!');
-            }, function() {
-                alert('Не удалось скопировать');
-            });
+            // Простой способ копирования
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            alert('Скопировано!');
+            
+            // Вибрация если есть Telegram
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
+            }
         }
 
         // Функция для показа модального окна с оплатой
         function showPaymentModal(product) {
+            console.log('Нажата кнопка покупки для товара:', product);
+            
             // Данные о товарах
             const products = {
                 'optimization': { 
@@ -487,11 +440,11 @@
             const selectedProduct = products[product];
             
             // Генерируем случайные реквизиты
-            const randomCard = Math.floor(Math.random() * 1000000000000000).toString().padStart(16, '0');
+            const randomCard = Math.floor(Math.random() * 10000000000000000).toString().padStart(16, '0');
             const randomCardFormatted = randomCard.replace(/(\d{4})/g, '$1 ').trim();
             
-            const randomWallet = 'T' + Math.random().toString(36).substring(2, 10).toUpperCase() + 
-                                 Math.random().toString(36).substring(2, 10).toUpperCase();
+            // Генерируем случайный кошелек (начинается с T)
+            const randomWallet = 'T' + Math.random().toString(36).substring(2, 15).toUpperCase();
             
             // Создаем HTML для модального окна
             const modalBody = `
@@ -521,7 +474,7 @@
                         📋 Скопировать номер карты
                     </button>
                     <div style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
-                        Банк: Тинькофф (Сбер)<br>
+                        Банк: Тинькофф<br>
                         Получатель: Kewberg Shop
                     </div>
                 </div>
@@ -536,36 +489,37 @@
                 </div>
             `;
             
+            // Вставляем HTML в модальное окно
             document.getElementById('modalTitle').textContent = `Оплата: ${selectedProduct.name}`;
             document.getElementById('modalBody').innerHTML = modalBody;
             
             // Показываем модальное окно
             document.getElementById('paymentModal').style.display = 'block';
+            console.log('Модальное окно открыто');
             
-            // Вибрация
-            tg.HapticFeedback.impactOccurred('medium');
+            // Вибрация если есть Telegram
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+            }
         }
 
         // Функция закрытия модального окна
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
-            tg.HapticFeedback.impactOccurred('light');
+            console.log('Модальное окно закрыто');
+            
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+            }
         }
 
         // Закрытие по клику на оверлей
-        document.getElementById('paymentModal').addEventListener('click', function(e) {
-            if (e.target === this) {
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('paymentModal');
+            if (e.target === modal) {
                 closeModal();
             }
         });
-
-        // Обработка нажатия на ссылку сайта
-        document.querySelector('.site-link').addEventListener('click', function(e) {
-            tg.HapticFeedback.impactOccurred('light');
-        });
-
-        // Адаптация под тему Telegram
-        tg.setHeaderColor('secondary_bg_color');
     </script>
 </body>
 </html>
