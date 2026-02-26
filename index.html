@@ -187,7 +187,6 @@
             overflow: hidden;
         }
 
-        /* Эффект ржавчины на карточке */
         .product-card::before {
             content: '';
             position: absolute;
@@ -430,6 +429,119 @@
             opacity: 0.9;
         }
 
+        /* Блоки оплаты */
+        .payment-block {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .payment-block:hover {
+            border-color: #ff5500;
+            transform: translateX(5px);
+        }
+
+        .payment-block h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #ff5500;
+        }
+
+        .payment-details {
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            word-break: break-all;
+            margin: 15px 0;
+            border: 1px dashed #ff5500;
+            text-align: center;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-details::before {
+            content: '⬤';
+            position: absolute;
+            left: 10px;
+            color: #ff5500;
+            font-size: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .copy-button {
+            background: linear-gradient(135deg, #ff5500, #ffaa00);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255,85,0,0.4);
+        }
+
+        /* СБП БЛОК - ОБНОВЛЕННЫЙ */
+        .sbp-block {
+            border-color: #ff5500;
+            background: linear-gradient(135deg, rgba(255,85,0,0.2), rgba(255,170,0,0.1));
+            text-align: center;
+        }
+
+        .qr-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 20px;
+            border: 4px solid #ff5500;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 0 30px rgba(255,85,0,0.5);
+            animation: pulse 2s infinite;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .sbp-link-button {
+            display: inline-block;
+            padding: 15px 25px;
+            background: #ff5500;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 15px 0;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sbp-link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255,85,0,0.4);
+            background: #ffaa00;
+        }
+
         /* Инструкция */
         .instruction-box {
             background: rgba(0,0,0,0.3);
@@ -570,6 +682,11 @@
             .feature-item {
                 font-size: 13px;
             }
+            
+            .qr-image {
+                width: 180px;
+                height: 180px;
+            }
         }
 
         /* Ссылка на основной сайт */
@@ -617,7 +734,6 @@
                 <div class="product-icon">⚙️</div>
                 <div class="product-title">Tweaker Blydrastorust</div>
                 
-                <!-- Список функций -->
                 <div class="features-list">
                     <div class="feature-item">FPS прирост 5-15% на любом железе</div>
                     <div class="feature-item">Убирает Input Lag - мышь как продолжение руки</div>
@@ -637,7 +753,7 @@
                 </button>
             </div>
 
-            <!-- Товар 2: АХК (оставляем как есть) -->
+            <!-- Товар 2: АХК -->
             <div class="product-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
                 <div class="product-icon">🤖</div>
                 <div class="product-title">АХК СКРИПТЫ</div>
@@ -661,7 +777,7 @@
             </div>
         </div>
 
-        <!-- Секция подтверждения (только кнопка и инструкция) -->
+        <!-- Секция подтверждения -->
         <div class="confirm-section" id="confirmSection">
             <div class="confirm-title">
                 <span>⚡</span> ПОДТВЕРЖДЕНИЕ
@@ -673,6 +789,41 @@
                 <div class="selected-product-price" id="selectedProductPrice"></div>
             </div>
 
+            <!-- СБП БЛОК (QR + ссылка) -->
+            <div class="payment-block sbp-block">
+                <h3>⚡ СБП - МОМЕНТАЛЬНО</h3>
+                
+                <!-- QR-код -->
+                <div style="text-align: center;">
+                    <img src="https://i.ibb.co/Kzzz1zh/photo-2026-02-27-02-21-30.jpg" 
+                         alt="QR код СБП"
+                         class="qr-image">
+                    <p style="margin-top: 15px; color: #ff5500; font-weight: bold;">
+                        📱 Отсканируй камерой Сбера
+                    </p>
+                </div>
+                
+                <!-- Ссылка на перевод -->
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://www.sberbank.ru/ru/choise_bank?requisiteNumber=79515900663&bankCode=100000000111" 
+                       target="_blank"
+                       class="sbp-link-button">
+                        🔗 ПЕРЕЙТИ К ОПЛАТЕ
+                    </a>
+                </div>
+            </div>
+
+            <!-- Крипта TRC20 -->
+            <div class="payment-block">
+                <h3>💰 КРИПТОВАЛЮТА USDT (TRC-20)</h3>
+                <div class="payment-details" id="walletAddress">
+                    TX7nqJqJkqJkqJkqJkqJkqJkqJkqJ
+                </div>
+                <button class="copy-button" onclick="copyToClipboard('walletAddress')">
+                    📋 СКОПИРОВАТЬ АДРЕС
+                </button>
+            </div>
+
             <!-- Инструкция -->
             <div class="instruction-box">
                 <div class="instruction-title">
@@ -681,7 +832,7 @@
                 
                 <div class="step-item">
                     <span class="step-number">1</span>
-                    <span><strong>Оплати</strong> любым способом</span>
+                    <span><strong>Оплати</strong> (СБП или крипта)</span>
                 </div>
                 
                 <div class="step-item">
@@ -704,7 +855,6 @@
             <div class="contact-box">
                 <div>📱 ЕСТЬ ВОПРОСЫ? ПИШИ:</div>
                 <a href="https://t.me/kewberg" target="_blank">@kewberg</a>
-                <div style="font-size: 14px; opacity: 0.9;">отправь скриншот оплаты и получи товар</div>
             </div>
         </div>
 
@@ -756,6 +906,24 @@
             setTimeout(() => {
                 selected.style.transform = 'scale(1)';
             }, 200);
+        }
+
+        // Функция копирования
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            alert('✅ СКОПИРОВАНО!');
+            
+            if (tg) {
+                tg.HapticFeedback.notificationOccurred('success');
+            }
         }
     </script>
 </body>
